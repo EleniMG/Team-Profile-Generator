@@ -9,7 +9,9 @@ class Manager extends Employee{
     }
 
     getRole(){
-        console.log("Role: Manager")
+        return "Manager"
     }
     
 }
+
+module.exports = Manager;
