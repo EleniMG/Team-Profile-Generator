@@ -105,9 +105,9 @@ const arrayOfEmployees = []
 class Team {
     init(){
         return inquirer.prompt(questions)
-        .then(() => {
-            arrayOfEmployees.push(questions);
-            console.log(arrayOfEmployees)
+        .then((value) => {
+            arrayOfEmployees.push(value);
+            console.log(value)
             this.newEmployeePrompt();
         })
     }
@@ -116,10 +116,8 @@ class Team {
         inquirer.prompt(newEmployee).then((value) => {
             if(value.nextEmployee === "Engineer"){
                 this.askEngineerQuestions();
-                arrayOfEmployees.push(questions);
             } else if(value.nextEmployee === "Intern"){
                 this.askInternQuestions();
-                arrayOfEmployees.push(questions);
             } else {
                 console.log(arrayOfEmployees)
                 console.log("DONE!")
@@ -131,20 +129,18 @@ class Team {
     }
 
     askEngineerQuestions(){
-        inquirer.prompt(engineerQuestions).then(() => {
-            arrayOfEmployees.push(engineerQuestions);
+        inquirer.prompt(engineerQuestions).then((value) => {
+            arrayOfEmployees.push(value);
             this.newEmployeePrompt()
         });
                 
     }
 
     askInternQuestions(){
-        
-        inquirer.prompt(internQuestions).then(() => {
-            arrayOfEmployees.push(internQuestions);
+        inquirer.prompt(internQuestions).then((value) => {
+            arrayOfEmployees.push(value);
             this.newEmployeePrompt()
         });
-                    
     }
 }
 
