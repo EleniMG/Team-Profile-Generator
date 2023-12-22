@@ -18,22 +18,26 @@ const questions = [
     {
         type: 'input',
         name: 'managerName',
-        message: "Please enter the manager's name"
+        message: "Please enter the manager's name",
+        validate: value => /([A-Z]+)(\s*)/gi.test(value)
     },
     {
         type: 'number',
         name: 'managerID',
-        message: "Please enter the manager's ID"
+        message: "Please enter the manager's ID",
+        validate: value => /([0-9]+)/gi.test(value)
     },
     {
         type: 'input',
         name: 'managerEmail',
-        message: "Please enter the manager's email"
+        message: "Please enter the manager's email",
+        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
     },
     {
         type: 'number',
         name: 'officeNumber',
-        message: "Please enter the office number"
+        message: "Please enter the office number",
+        validate: value => /([0-9]+)/gi.test(value)
     }
 ]
 
@@ -48,22 +52,26 @@ const engineerQuestions = [
     {
         type: 'input',
         name: 'engineerName',
-        message: "Please enter the engineer's name"
+        message: "Please enter the engineer's name",
+        validate: value => /([A-Z]+)(\s*)/gi.test(value)
     },
     {
         type: 'number',
         name: 'engineerID',
-        message: "Please enter the engineer's ID"
+        message: "Please enter the engineer's ID",
+        validate: value => /[0-9]+/gi.test(value)
     },
     {
         type: 'input',
         name: 'engineerEmail',
-        message: "Please enter the engineer's email"
+        message: "Please enter the engineer's email",
+        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
     },
     {
         type: 'input',
         name: 'github',
-        message: "Please enter the GitHub username"
+        message: "Please enter the GitHub username",
+        validate: value => /(\w+)/gi.test(value)
     }
 ]
 
@@ -71,36 +79,31 @@ const internQuestions = [
     {
         type: 'input',
         name: 'internName',
-        message: "Please enter the intern's name"
+        message: "Please enter the intern's name",
+        validate: value => /([A-Z]+)(\s*)/gi.test(value)
     },
     {
         type: 'number',
         name: 'internID',
-        message: "Please enter the intern's ID"
+        message: "Please enter the intern's ID",
+        validate: value => /[0-9]+/gi.test(value)
     },
     {
         type: 'input',
         name: 'internEmail',
-        message: "Please enter the intern's email"
+        message: "Please enter the intern's email",
+        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
     },
     {
         type: 'input',
         name: 'school',
-        message: "Please enter the intern's school name"
+        message: "Please enter the intern's school name",
+        validate: value => /(\w+)(\s*)/gi.test(value)
+
     }
 ]
 
 const arrayOfEmployees = []
-
-// const init = function(){
-//     inquirer.prompt(questions);
-//     arrayOfEmployees.push(questions);
-//     console.log(arrayOfEmployees)
-
-// }
-// const newEmployeePrompt = () => inquirer.prompt(newEmployee);
-// const engineerPrompt = () => inquirer.prompt(engineerQuestions);
-// const internPrompt = () => inquirer.prompt(internQuestions);
 
 class Team {
     init(){
@@ -146,31 +149,3 @@ class Team {
 
 const team = new Team();
 team.init()
-
-
-// init().then((questions) => {
-    
-//     newEmployeePrompt().then((newEmployee) => {
-//         if(newEmployee.nextEmployee === "Engineer"){
-//             engineerPrompt().then((engineerQuestions) => {
-//                 arrayOfEmployees.push(engineerQuestions);
-//                 this.newEmployeePrompt()
-//             })
-            
-            
-//         } else if(newEmployee.nextEmployee === "Intern"){
-//             internPrompt().then((internQuestions) => {
-//                 arrayOfEmployees.push(internQuestions);
-//                 this.newEmployeePrompt();
-                
-//             })
-            
-            
-  
-//         } else {
-//             console.log(arrayOfEmployees)
-//             console.log("DONE!")
-//                 // fs.writeFile('../output/team.html', arrayOfEmployees)
-//         }
-//     })
-// })
