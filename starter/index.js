@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
+const { array } = require("yargs");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
@@ -89,13 +90,91 @@ const internQuestions = [
     }
 ]
 
+const arrayOfEmployees = []
 
-// function to initialize program
-const init = () => inquirer.prompt(questions);
+// const init = function(){
+//     inquirer.prompt(questions);
+//     arrayOfEmployees.push(questions);
+//     console.log(arrayOfEmployees)
 
-init()
-    .then((questions) => {
-        inquirer.prompt(newEmployee);
-        console.log(questions)
-        console.log(newEmployee.name)})
+// }
+// const newEmployeePrompt = () => inquirer.prompt(newEmployee);
+// const engineerPrompt = () => inquirer.prompt(engineerQuestions);
+// const internPrompt = () => inquirer.prompt(internQuestions);
 
+class Team {
+    init(){
+        return inquirer.prompt(questions)
+        .then(() => {
+            arrayOfEmployees.push(questions);
+            console.log(arrayOfEmployees)
+            this.newEmployeePrompt();
+        })
+    }
+
+    newEmployeePrompt(){
+        inquirer.prompt(newEmployee).then((value) => {
+            if(value.nextEmployee === "Engineer"){
+                this.askEngineerQuestions();
+                arrayOfEmployees.push(questions);
+            } else if(value.nextEmployee === "Intern"){
+                this.askInternQuestions();
+                arrayOfEmployees.push(questions);
+            } else {
+                console.log(arrayOfEmployees)
+                console.log("DONE!")
+                // fs.writeFile('../output/team.html', arrayOfEmployees)
+            }
+
+        })
+        
+    }
+
+    askEngineerQuestions(){
+        inquirer.prompt(engineerQuestions).then(() => {
+            arrayOfEmployees.push(engineerQuestions);
+            this.newEmployeePrompt()
+        });
+                
+    }
+
+    askInternQuestions(){
+        
+        inquirer.prompt(internQuestions).then(() => {
+            arrayOfEmployees.push(internQuestions);
+            this.newEmployeePrompt()
+        });
+                    
+    }
+}
+
+const team = new Team();
+team.init()
+
+
+// init().then((questions) => {
+    
+//     newEmployeePrompt().then((newEmployee) => {
+//         if(newEmployee.nextEmployee === "Engineer"){
+//             engineerPrompt().then((engineerQuestions) => {
+//                 arrayOfEmployees.push(engineerQuestions);
+//                 this.newEmployeePrompt()
+//             })
+            
+            
+//         } else if(newEmployee.nextEmployee === "Intern"){
+//             internPrompt().then((internQuestions) => {
+//                 arrayOfEmployees.push(internQuestions);
+//                 this.newEmployeePrompt();
+                
+//             })
+            
+            
+  
+//         } else {
+//             console.log(arrayOfEmployees)
+//             console.log("DONE!")
+//                 // fs.writeFile('../output/team.html', arrayOfEmployees)
+//         }
+//     })
+// })
