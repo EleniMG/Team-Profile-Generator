@@ -9,7 +9,13 @@ class Manager extends Employee{
     }
 
     getOfficeNumber(){
-        return this.officeNumber;
+        if(typeof this.officeNumber === "number"){
+            return this.officeNumber;
+        } else {
+            console.log("Please enter a valid office number")
+            this.getOfficeNumber()
+        }    
+        
     }
 
     getRole(){

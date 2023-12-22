@@ -8,11 +8,22 @@ class Employee {
     }
 
     getName(){
-        return this.name;
+        if(typeof this.name === "string"){
+            return this.name;
+        } else {
+            console.log("Please enter a valid name");
+            this.getName()
+        }    
+        
     }
 
     getId(){
-         return this.id;
+        if(typeof this.id === "number"){
+            return this.id;
+        } else {
+            console.log("Please enter a valid ID");
+            this.getId()
+        }    
     }
 
     getEmail(){

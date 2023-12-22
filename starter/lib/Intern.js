@@ -9,7 +9,12 @@ class Intern extends Employee{
     }
 
     getSchool(){
-        return this.school
+        if(typeof this.school === "string"){
+            return this.school;
+        } else {
+            console.log("Please enter a valid school name")
+            this.getSchool()
+        } 
     }
 
     getRole(){
