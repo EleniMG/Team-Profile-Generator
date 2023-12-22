@@ -8,19 +8,19 @@ class Employee {
     }
 
     getName(){
-        console.log(this.name)
+        console.log(`Name: ${this.name}`)
     }
 
     getId(){
-        console.log(this.id)
+        console.log(`ID: ${this.id}`)
     }
 
     getEmail(){
-        console.log(this.email)
+        console.log(`Email: ${this.email}`)
     }
 
     getRole(){
-        console.log("Employee")
+        console.log("Role: Employee")
     }
 }
 
