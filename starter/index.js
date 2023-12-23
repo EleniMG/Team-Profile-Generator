@@ -31,7 +31,7 @@ const questions = [
         type: 'input',
         name: 'managerEmail',
         message: "Please enter the manager's email",
-        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
+        validate: value => /(\w+)@(\w+)\.(\w+)/gi.test(value)
     },
     {
         type: 'number',
@@ -65,13 +65,12 @@ const engineerQuestions = [
         type: 'input',
         name: 'engineerEmail',
         message: "Please enter the engineer's email",
-        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
+        validate: value => /(\w+)@(\w+)\.(\w+)/gi.test(value)
     },
     {
         type: 'input',
         name: 'github',
         message: "Please enter the GitHub username",
-        validate: value => /(\w+)/gi.test(value)
     }
 ]
 
@@ -92,7 +91,7 @@ const internQuestions = [
         type: 'input',
         name: 'internEmail',
         message: "Please enter the intern's email",
-        validate: value => /(\w+)@(\w+).(\w+)/gi.test(value)
+        validate: value => /(\w+)@(\w+)\.(\w+)/gi.test(value)
     },
     {
         type: 'input',
