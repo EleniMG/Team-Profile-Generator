@@ -121,9 +121,7 @@ class Team {
             } else if(value.nextEmployee === "Intern"){
                 this.askInternQuestions();
             } else {
-                console.log(arrayOfEmployees)
-                console.log("DONE!")
-                // fs.writeFile('../output/team.html', arrayOfEmployees)
+                this.renderTeam();
             }
 
         })
@@ -144,6 +142,13 @@ class Team {
             this.newEmployeePrompt()
         });
     }
+
+    renderTeam(){
+        render(arrayOfEmployees);
+        // fs.writeFile('../output/team.html', arrayOfEmployees)
+    }
+
+
 }
 
 const team = new Team();
