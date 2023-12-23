@@ -4,6 +4,8 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const util = require('util')
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -108,8 +110,9 @@ class Team {
     init(){
         return inquirer.prompt(questions)
         .then((value) => {
-            arrayOfEmployees.push(value);
-            console.log(value)
+            const manager = new Manager(value.managerName, value.managerID, value.managerEmail, value.officeNumber)
+            arrayOfEmployees.push(manager);
+            console.log(arrayOfEmployees)
             this.newEmployeePrompt();
         })
     }
@@ -130,7 +133,8 @@ class Team {
 
     askEngineerQuestions(){
         inquirer.prompt(engineerQuestions).then((value) => {
-            arrayOfEmployees.push(value);
+            const engineer = new Engineer(value.engineerName, value.engineerID, value.engineerEmail, value.github)
+            arrayOfEmployees.push(engineer);
             this.newEmployeePrompt()
         });
                 
@@ -138,14 +142,15 @@ class Team {
 
     askInternQuestions(){
         inquirer.prompt(internQuestions).then((value) => {
-            arrayOfEmployees.push(value);
+            const intern = new Intern(value.internName, value.internID, value.internEmail, value.school)
+            arrayOfEmployees.push(intern);
             this.newEmployeePrompt()
         });
     }
 
     renderTeam(){
-        render(arrayOfEmployees);
-        // fs.writeFile('../output/team.html', arrayOfEmployees)
+        console.log(arrayOfEmployees);
+        writeFileAsync('./output/team.html', render(arrayOfEmployees));
     }
 
 
