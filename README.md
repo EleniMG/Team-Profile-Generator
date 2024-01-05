@@ -25,11 +25,13 @@ Please note that validation has been added to ensure that the format is in the c
 
 You can create as many employees as you wish. Once you have finished, select "Finished building my team", and a HTML file will be created in the output folder containing your team's information.
 
-Please take a look below at some screenshots to see how it works:
+Please take a look below at some screenshots and video to see how it works:
 
 ![Command Line](./assets/Screenshot1.png)
 
 ![HTML File](./assets/Screenshot2.png)
+
+https://github.com/EleniMG/Team-Profile-Generator/assets/112894341/149092dd-b59a-4b9e-ad52-068d89b83c4c
 
 
 ## Credits
